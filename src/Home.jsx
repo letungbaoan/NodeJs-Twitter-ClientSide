@@ -49,27 +49,25 @@ export default function Home() {
         </span>
       </div>
       <h2>Video Streaming</h2>
-      <video controls width={500}>
+      {/* <video controls width={500}>
         <source
           src="http://localhost:4000/static/video-stream/d92c36ae8be9ccc470d5da200.mp4"
           type="video/mp4"
         />
-      </video>
+      </video> */}
       <h2>HLS Streaming</h2>
       <MediaPlayer
         title=""
-        src={}
-        poster=""
-        thumbnails={}
-        aspectRatio={}
-        crossorigin={
-        }>
-          <MediaOutlet>
-            <MediaPoster alt=""/>
-              <track/>
-              <track/>
+        src="http://localhost:4000/static/video-hls/oOTDBEUV8kzLkzCFutRgA/master.m3u8"
+        //poster=""
+        //thumbnails={}
+        aspectRatio={16 / 9}
+        crossorigin=""
+      >
+        <MediaOutlet>
+            <MediaPoster alt="A lad"/>
           </MediaOutlet>
-          <MediaCommunitySkin/>        
+        <MediaCommunitySkin />
       </MediaPlayer>
       <h1>Google OAuth 2.0</h1>
       <p className="read-the-docs">
