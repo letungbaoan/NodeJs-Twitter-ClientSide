@@ -25,7 +25,7 @@ export default function VerifyEmail() {
             localStorage.setItem("refresh_token", refresh_token);
           }
         }).catch((err) => {
-            console.log(err)
+            console.log(err.response.data.message)
         });
     }
     return () => {
