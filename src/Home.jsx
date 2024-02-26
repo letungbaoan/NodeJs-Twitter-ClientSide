@@ -58,7 +58,7 @@ export default function Home() {
       <h2>HLS Streaming</h2>
       <MediaPlayer
         title=""
-        src="http://localhost:4000/static/video-hls/oOTDBEUV8kzLkzCFutRgA/master.m3u8"
+        src="http://localhost:4000/static/video-hls/nlphfwiPYkIuLwQnB6fkO/master.m3u8"
         //poster=""
         //thumbnails={}
         aspectRatio={16 / 9}
