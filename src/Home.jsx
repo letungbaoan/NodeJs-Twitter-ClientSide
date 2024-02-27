@@ -33,6 +33,7 @@ const googleOAuthUrl = getGoogleAuthUrl();
 
 export default function Home() {
   const isAuthenticated = Boolean(localStorage.getItem("access_token"));
+  const profile = JSON.parse(localStorage.getItem('profile')) || {}
   const logout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
@@ -73,7 +74,7 @@ export default function Home() {
       <p className="read-the-docs">
         {isAuthenticated ? (
           <>
-            <span>You are logged in</span>
+            <span>Hello <strong>{profile.email}</strong>, you are logged in</span>
             <button onClick={logout}>Logout</button>
           </>
         ) : (
