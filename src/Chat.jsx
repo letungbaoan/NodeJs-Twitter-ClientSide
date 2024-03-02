@@ -38,12 +38,15 @@ export default function Chat() {
   };
   useEffect(() => {
     socket.auth = {
-      _id: profile._id,
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
     };
     socket.connect();
     socket.on("receive_message", (data) => {
       const { payload } = data;
-      setConversations((conversations) => [...conversations, payload]);
+      setConversations((conversations) => [payload, ...conversations]);
+    });
+    socket.on("connect_error", (err) => {
+      console.log(err);
     });
     return () => {
       socket.disconnect();
@@ -136,7 +139,7 @@ export default function Chat() {
           height: 300,
           overflow: "auto",
           display: "flex",
-          flexDirection: "column-reverse",
+          flexDirection: "column",
         }}
       >
         {/*Put the scroll bar always on the bottom*/}
@@ -167,24 +170,7 @@ export default function Chat() {
           ))}
         </InfiniteScroll>
       </div>
-      {/* <div className="chat">
-        {conversations.map((conversation) => (
-          <div key={conversation._id}>
-            <div className="message-container">
-              <div
-                className={
-                  "message " +
-                  (conversation.sender_id === profile._id
-                    ? "message-right"
-                    : "")
-                }
-              >
-                {conversation.content}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div> */}
+      
       <form onSubmit={send}>
         <input
           type="text"
