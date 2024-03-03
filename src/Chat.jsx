@@ -41,9 +41,15 @@ export default function Chat() {
       const { payload } = data;
       setConversations((conversations) => [payload, ...conversations]);
     });
+
     socket.on("connect_error", (err) => {
       console.log(err);
     });
+
+    socket.on("disconnect", (reason) => {
+      console.log(reason)
+    });
+
     return () => {
       socket.disconnect();
     };
@@ -166,7 +172,7 @@ export default function Chat() {
           ))}
         </InfiniteScroll>
       </div>
-      
+
       <form onSubmit={send}>
         <input
           type="text"
